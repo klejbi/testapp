@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
               ),
               TextButton(onPressed: () {}, child: Text('bye')),
               SizedBox(
-                height: 30.0,
+                height: 45.0,
                 width: 290,
                 child: TextField(
                   decoration: InputDecoration(
@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              
             ],
           ),
         ),
