@@ -27,6 +27,7 @@ class _HipageState extends State<Hipage> {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text('cliked ${index + 1}'),
