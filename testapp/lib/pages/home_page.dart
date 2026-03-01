@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/pages/hipage.dart';
 import 'package:testapp/pages/lol_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,12 +13,22 @@ class HomePage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Text('hi'),
+              TextButton(
+                child: Text ('hi'),
+              onPressed: (){
+                Navigator.push(
+                  context, 
+                MaterialPageRoute(
+                  builder: (context) => Hipage(),
+                ),
+                );
+              }),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LolPage()),
+                    MaterialPageRoute(
+                      builder: (context) =>  LolPage()),
                   );
                 },
                 child: Text('lol'),
@@ -40,3 +51,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
