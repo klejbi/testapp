@@ -9,6 +9,8 @@ class LolPage extends StatefulWidget {
 
 class _LolPageState extends State<LolPage> {
   final myController = TextEditingController();
+  final List<String> listSiema = [];
+
   @override
   void dispose() {
     myController.dispose();
@@ -18,33 +20,46 @@ class _LolPageState extends State<LolPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: const Text('Moja Lista')),
       body: Column(
         children: [
-          Center(child: Text('hello')),
+          const Center(child: Text('hello')),
+          const SizedBox(height: 10),
           SizedBox(
             height: 55.0,
             width: 290,
             child: TextField(
               controller: myController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'siema',
               ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: listSiema.length, // Tutaj też małe 'l'
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(listSiema[index]), // I tutaj
+                  leading: const Icon(Icons.label),
+                );
+              },
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(content: Text(myController.text));
-            },
-          );
+          if (myController.text.isNotEmpty) {
+            setState(() {
+              // Teraz nazwa zgadza się z definicją na górze
+              listSiema.add(myController.text);
+              myController.clear();
+            });
+          }
         },
-        child: const Icon(Icons.battery_unknown),
+        child: const Icon(Icons.add),
       ),
     );
   }
