@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/pages/hipage.dart';
+import 'package:testapp/pages/hi_page.dart';
 import 'package:testapp/pages/lol_page.dart';
+import 'package:testapp/pages/bye_page.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,7 +35,12 @@ class HomePage extends StatelessWidget {
                 },
                 child: Text('lol'),
               ),
-              TextButton(onPressed: () {}, child: Text('bye')),
+              TextButton(onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => (ByePage())),
+                );
+              }, child: Text('bye')),
               SizedBox(
                 height: 45.0,
                 width: 290,
