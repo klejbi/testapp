@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class LolPage extends StatefulWidget {
@@ -9,7 +11,7 @@ class LolPage extends StatefulWidget {
 
 class _LolPageState extends State<LolPage> {
   final myController = TextEditingController();
-  final List<String> listSiema = [];
+  final List<String> listSiema = ['lol', 'lolo', 'lole'];
   @override
   void dispose() {
     myController.dispose();
@@ -19,7 +21,7 @@ class _LolPageState extends State<LolPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(backgroundColor: Colors.transparent),
       body: Column(
         children: [
           Center(child: Text('hello')),
@@ -34,24 +36,30 @@ class _LolPageState extends State<LolPage> {
               ),
             ),
           ),
-          Expanded(child: ListView.builder(
-            itemCount: listSiema.length,
-            itemBuilder: (context, index){
-              return ListTile(
-                title: Text(listSiema[index]),
-                leading: const Icon(Icons.label),
-              );
-            })),
           Padding(
-            padding: const EdgeInsets.only(bottom: 600.0),
-            child: ElevatedButton(onPressed: () {
-              if (myController.text.isNotEmpty){
-                setState(() {
-                  listSiema.add(myController.text);
-                  myController.clear();
-                });
-              }
-            }, child: Text('add')),
+            padding: const EdgeInsets.only(bottom: 10.0, top: 10.0),
+            child: ElevatedButton(
+              onPressed: () {
+                if (myController.text.isNotEmpty) {
+                  setState(() {
+                    listSiema.add(myController.text);
+                    myController.clear();
+                  });
+                }
+              },
+              child: Text('add'),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: min(listSiema.length, 15),
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(listSiema[index]),
+                  leading: const Icon(Icons.label),
+                );
+              },
+            ),
           ),
         ],
       ),
