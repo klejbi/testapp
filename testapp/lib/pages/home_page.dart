@@ -17,9 +17,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const LolPage(),
-                    ),
+                    MaterialPageRoute(builder: (context) => const LolPage()),
                   );
                 },
                 child: Text('lol'),
@@ -35,7 +33,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              
             ],
           ),
         ),
