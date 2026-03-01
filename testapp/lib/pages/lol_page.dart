@@ -6,53 +6,46 @@ class LolPage extends StatefulWidget {
   @override
   State<LolPage> createState() => _LolPageState();
 }
+
 class _LolPageState extends State<LolPage> {
   final myController = TextEditingController();
-
-
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     myController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(),
       body: Column(
         children: [
           Center(child: Text('hello')),
-            SizedBox(
-                height: 55.0,
-                width: 290,
-                child: TextField(
-                  controller: myController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'siema',
-                  ),
-                ),
+          SizedBox(
+            height: 55.0,
+            width: 290,
+            child: TextField(
+              controller: myController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'siema',
               ),
+            ),
+          ),
         ],
       ),
-     floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
             context: context,
             builder: (context) {
-              return AlertDialog(
-                title: const Text("Wpisałeś:"),
-                content: Text(myController.text), // Teraz zadziała!
-              );
+              return AlertDialog(content: Text(myController.text));
             },
           );
         },
-        child: const Icon(Icons.ads_click),
+        child: const Icon(Icons.battery_unknown),
       ),
     );
   }
 }
- 
-
