@@ -45,6 +45,10 @@ class _LolPageState extends State<LolPage> {
                     listSiema.add(myController.text);
                     myController.clear();
                   });
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('too much element')),
+                  );
                 }
               },
               child: Text('add'),
@@ -52,11 +56,39 @@ class _LolPageState extends State<LolPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: min(listSiema.length, 15),
+              itemCount: listSiema.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(listSiema[index]),
-                  leading: const Icon(Icons.label),
+                final item = listSiema[index];
+
+                return Dismissible(
+                  key: UniqueKey(),
+                  direction: DismissDirection.endToStart,
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: const Icon(Icons.delete, color: Colors.white),
+                  ),
+                  onDismissed: (direction) {
+                    setState(() {
+                      listSiema.removeAt(index);
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Usunięto: $item'),
+                        action: SnackBarAction(
+                          label: 'Cofnij',
+                          onPressed: () {
+                            // Tutaj można dodać logikę przywracania elementu
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                  child: ListTile(
+                    title: Text(listSiema[index]),
+                    leading: const Icon(Icons.label),
+                  ),
                 );
               },
             ),
