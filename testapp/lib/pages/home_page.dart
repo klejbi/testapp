@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                 );
               }, child: Text('bye')),
               SizedBox(
-                height: 45.0,
+                height: 60.0,
                 width: 290,
                 child: TextField(
                   decoration: InputDecoration(

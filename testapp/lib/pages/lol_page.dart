@@ -57,7 +57,7 @@ class _LolPageState extends State<LolPage> {
               onPressed: () {
                 if (myController.text.isNotEmpty) {
                   // Sprawdzamy limit (15 elementów)
-                  if (provider.listSiema.length < 15) {
+                  if (provider.listSiema.length < 5) {
                     // Dodajemy element przez Providera
                     context.read<ListProvider>().addElement(myController.text);
                     myController.clear(); // Czyścimy pole po dodaniu

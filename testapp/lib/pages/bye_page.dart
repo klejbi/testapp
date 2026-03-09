@@ -12,6 +12,18 @@ class _ByePageState extends State<ByePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(child: Text('byeeee bitch ')));
+      body: Column(
+        children: [
+          Center(child: Text('type your product')),
+          SizedBox(
+            height: 60.0,
+            width: 290,
+            child: TextField(
+              decoration: const InputDecoration(border: OutlineInputBorder()),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
